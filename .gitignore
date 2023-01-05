@@ -1,0 +1,17 @@
+# Ignore compiled files
+*.o
+*.out
+
+# Ignore temporary files
+*.tmp
+*.bak
+
+# Ignore log files
+*.log
+
+# Ignore password and private key files
+*.pwd
+*.key
+
+# Ignore node_modules directory
+node_modules/
