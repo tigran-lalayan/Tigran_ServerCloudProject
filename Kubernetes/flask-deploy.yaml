@@ -23,7 +23,7 @@ kind: Service
 metadata:
   name: hello-flask
 spec:
-  type: LoadBalancer
+  type: NodePort
   selector:
     app: hello-flask
   ports:
