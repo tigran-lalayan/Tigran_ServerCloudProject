@@ -44,8 +44,26 @@ spec:
       - name: mysql
         image: mysql:8.0
         env:
+        - name: MYSQL_DATABASE
+          valueFrom:
+            SecretKeyRef:
+              name: mysql-secret
+              key: dbdatabase
+        - name: MYSQL_USER
+          valueFrom:
+            SecretKeyRef:
+              name: mysql-secret
+              key: dbuser
+        - name: MYSQL_PASSWORD
+          valueFrom:
+            SecretKeyRef:
+              name: mysql-secret
+              key: dbpass
         - name: MYSQL_ROOT_PASSWORD
-          value: password
+          valueFrom:
+            SecretKeyRef:
+              name: mysql-secret
+              key: dbrpass
         ports:
         - containerPort: 3306
 ---
