@@ -14,7 +14,7 @@ spec:
     spec:
       containers:
       - name: hello-flask
-        image: tikops/flask:v1.0
+        image: tikops/flask:latest
         ports:
         - containerPort: 5000
 ---
