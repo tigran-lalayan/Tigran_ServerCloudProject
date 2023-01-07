@@ -21,13 +21,13 @@ cnx = mysql.connector.connect(
 )
 
 # Run a query
-cursor = cnx.cursor()
-query = 'SELECT * FROM users'
-cursor.execute(query)
+#cursor = cnx.cursor()
+#query = 'SELECT * FROM users'
+#cursor.execute(query)
 
 # Print the results
-for row in cursor:
-    print(row)
+#for row in cursor:
+#    print(row)
 
 # Close the connection
 cnx.close()
