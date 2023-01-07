@@ -16,7 +16,7 @@ if __name__ == '__main__':
 cnx = mysql.connector.connect(
     host='mysql',
     user='root',
-    password='password',
+    password='test1234',
     database='mydatabase'
 )
 
