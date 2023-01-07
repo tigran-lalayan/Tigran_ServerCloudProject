@@ -9,6 +9,8 @@ COPY requirements.txt .
 # Install the dependencies
 RUN pip install -r requirements.txt
 
+ENV FLASK_APP=app.py
+
 # Copy the application code
 COPY . .
 
