@@ -12,7 +12,7 @@ RUN pip install -r requirements.txt
 ENV FLASK_APP=app/app.py
 
 # Copy the application code
-COPY . .
+COPY app /app/app
 
 # Run the app
 CMD ["python", "-m", "flask", "run", "--host=0.0.0.0"]
