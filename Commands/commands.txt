@@ -1,4 +1,6 @@
 #install minikube and kubectl 
+#the mysql-deploy file uses a custom Dockerfile who pulls from a mysql:8-0-debian image. So preferably use something like an ubuntu server to run this project
+
 
 curl -LO "https://storage.googleapis.com/kubernetes-release/release/$(curl -L -s https://storage.googleapis.com/kubernetes-release/release/stable.txt)/bin/linux/amd64/kubectl"
 chmod +x kubectl
