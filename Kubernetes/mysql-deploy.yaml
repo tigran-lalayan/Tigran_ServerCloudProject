@@ -15,7 +15,7 @@ spec:
         app: mysql
     spec:
       containers:
-      - image: mysql:8.0
+      - image: tikops/my-mysql-image:latest
         name: mysql
         env:
         - name: MYSQL_ROOT_PASSWORD
@@ -29,10 +29,15 @@ spec:
         volumeMounts:
         - name: mysql-persistent-storage
           mountPath: /var/lib/mysql
+        - name: ssl-certs
+          mountPath: /etc/mysql/ssl
       volumes:
       - name: mysql-persistent-storage
         persistentVolumeClaim:
           claimName: mysql-pv-claim
+      - name: ssl-certs
+        configMap:
+          name: mysql-ssl-certs
 ---
 apiVersion: v1
 kind: Service

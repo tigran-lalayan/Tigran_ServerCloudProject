@@ -15,8 +15,21 @@ spec:
       containers:
       - name: hello-flask
         image: tikops/flask:latest
+        env:
+        - name: MYSQL_PASSWORD
+          valueFrom:
+            secretKeyRef:
+              name: mysql-secret
+              key: password
+        volumeMounts:
+        - name: ssl-certs
+          mountPath: /etc/mysql/ssl
         ports:
         - containerPort: 5000
+      volumes:
+      - name: ssl-certs
+        configMap:
+          name: mysql-ssl-certs
 ---
 apiVersion: v1
 kind: Service

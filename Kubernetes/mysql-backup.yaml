@@ -1,0 +1,34 @@
+apiVersion: batch/v1
+kind: CronJob
+metadata:
+  name: mysql-backup
+spec:
+  schedule: "0 0 * * *"
+  jobTemplate:
+    spec:
+      template:
+        spec:
+          serviceAccountName: pod-executor
+          containers:
+          - name: mysql-backup
+            image: tikops/my-mysql-image:latest
+            command: ["/bin/sh"]
+            args: ["/mysql-backup-script/mysql-backup.sh"]
+            env:
+            - name: MYSQL_ROOT_PASSWORD
+              valueFrom:
+                secretKeyRef:
+                  name: mysql-secret
+                  key: password
+            volumeMounts:
+            - name: mysql-backup
+              mountPath: /backup
+            - name: mysql-backup-script
+              mountPath: /mysql-backup-script
+          volumes:
+          - name: mysql-backup
+            emptyDir: {}
+          - name: mysql-backup-script
+            configMap:
+              name: mysql-backup-script
+          restartPolicy: OnFailure
