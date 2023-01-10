@@ -1,0 +1,18 @@
+
+#to access minikube dashboard on port 8001
+minikube start
+minikube dashboard
+kubectl proxy --address='0.0.0.0' --disable-filter=true
+
+#cd /Kubernetes 
+kubectl apply -f mysql-secrets.yaml
+kubectl apply -f mysql-ssl-certs.yaml
+kubectl apply -f mysql-storage.yaml
+kubectl apply -f mysql-deploy.yaml
+kubectl apply -f mysql-clusterrole.yaml
+kubectl apply -f mysql-service-account.yaml
+kubectl apply -f mysql-clusterrole-binding.yaml
+kubectl apply -f mysql-backup-script.yaml
+kubectl apply -f mysql-backup.yaml
+kubectl apply -f flask-deploy.yaml
+kubectl apply -f flask-ingress.yaml
